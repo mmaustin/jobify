@@ -2,7 +2,7 @@
 
 const App = () => {
   return (
-    <hi>jobify</hi>
+    <h1>jobify</h1>
   );
 }
 

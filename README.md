@@ -25,3 +25,13 @@ Find the App Useful? [You can always buy me a coffee](https://www.buymeacoffee.c
 - npm start
 - set editor/browser side by side
 - copy/paste assets from complete project
+
+#### Spring Cleaning
+
+- in src remove
+- App.css
+- App.test.js
+- logo.svg
+- reportWebVitals.js
+- setupTests.js
+- fix App.js and index.js

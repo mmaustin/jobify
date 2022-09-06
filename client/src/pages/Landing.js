@@ -1,13 +1,11 @@
 import React from 'react';
 import logo from '../assets/images/logo.svg';
 import main from '../assets/images/main.svg';
+import styled from 'styled-components'
 
 const Landing = () => {
-
-
-
   return (
-    <main>
+    <Wrapper>
         <nav>
             <img src={logo} alt='jobify' className='logo'/>
         </nav>
@@ -23,8 +21,19 @@ const Landing = () => {
             </div>
             <img src={main} alt="job hunt" className='img main-img'/>
         </div>
-    </main>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.main`
+    nav {
+        width: var(--fluid-width);
+        max-width: var(--max-width);
+        margin: 0 auto;
+        height: var(--nav-height);
+        display: flex;
+        align-items: center;
+    }
+`
 
 export default Landing;

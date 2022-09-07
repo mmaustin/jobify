@@ -7,6 +7,11 @@ import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 const App = () => {
   return (
     <BrowserRouter>
+      <nav>
+         <Link to='/'>Dashboard</Link>
+         <Link to='/register'>Register</Link>
+         <Link to='/landing'>Landing Page</Link>
+      </nav>
       <Routes>
         <Route path="/" element={<div>Dashboard</div>} />
         <Route path="/register" element={<div>Register</div>} />

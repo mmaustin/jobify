@@ -3,18 +3,13 @@ import {Landing} from './pages'
 import { Error } from './pages';
 import {Dashboard} from './pages';
 import {Register} from './pages';
-import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 
 
 const App = () => {
   return (
     <BrowserRouter>
-      <nav>
-         <Link to='/'>Dashboard</Link>
-         <Link to='/register'>Register</Link>
-         <Link to='/landing'>Landing Page</Link>
-      </nav>
       <Routes>
         <Route path="/" element={<Dashboard/>} />
         <Route path="/register" element={<Register/>} />

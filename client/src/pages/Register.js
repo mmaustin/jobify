@@ -11,7 +11,7 @@ const initialState = {
 }
 
 const Register = () => {
-    const [value, setValue] = useState(initialState);
+    const [values, setValue] = useState(initialState);
 
     const handleChange = e => {
         console.log(e.target);
@@ -23,8 +23,28 @@ const Register = () => {
     }
 
     return (
-        
-        <h1>Register Here</h1>
+        <Wrapper className='full-page'>
+            <form className='form' onSubmit={onSubmit}>
+                <Logo/>
+                <h3>Login</h3>
+                {/* name input */}
+                <div className='form-row'>
+                    <label htmlFor='name' className='form-label'>
+                        name
+                    </label>
+                    <input
+                    type="text"
+                    name='name'
+                    value={values.name}
+                    onChange={handleChange}
+                    className='form-input'
+                    />
+                </div>
+                <button type='submit' className='btn btn-block'>
+                    submit
+                </button>
+            </form>
+        </Wrapper>
   )
 }
 

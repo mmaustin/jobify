@@ -8,11 +8,15 @@ const initialState = {
     email: '',
     password: '',
     isMember: true,
-    showAlert: true,
+    showAlert: false,
 }
 
 const Register = () => {
-    const [values, setValue] = useState(initialState);
+    const [values, setValues] = useState(initialState);
+
+    const toggleMember = () => {
+        setValues({...values, isMember: !values.isMember})
+    }
 
     const handleChange = e => {
         console.log(e.target);

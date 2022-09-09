@@ -21,4 +21,4 @@ const useAppContext = () => {
     return useContext(AppContext);
 }
 
-export {AppProvider, initialState};
+export {AppProvider, initialState, useAppContext};

@@ -651,157 +651,181 @@ const port = process.env.PORT || 5000
 app.listen(port, () => console.log(`Server is listening on port ${port}...`))
 ```
 
-# Jobify
+#### Not Found Middleware
 
-#### Track Your Job Search
+- in the root create <b>middleware</b> folder
+- not-found.js
+- setup function
+- return 404 with message 'Route does not exist'
+- import in server.js
+- make sure to use .js extension
+- place after home route
 
-Project in Action - [Jobify](https://www.jobify.live/)
+#### Error Middleware
 
-#### Support
+- in the middleware create error-handler.js
+- setup function
+- accept 4 parameters, first one error
+- log error
+- return 500
+- json({msg:'there was an error'})
+- import in the server.js
+- make sure to use .js extension
+- place it last
+- eventually handle Mongoose Errors, just like in the node-express
+- showcase with async errors
 
-Find the App Useful? [You can always buy me a coffee](https://www.buymeacoffee.com/johnsmilga)
-
-#### Run The App Locally
-
-```sh
-npm run install-dependencies
-```
-
-- rename .env.temp to .env
-- setup values for - MONGO_URL, JWT_SECRET, JWT_LIFETIME
-
-```sh
-npm start
-```
-
-- visit url http://localhost:3000/
-
-#### Setup React App
-
-- create <b>client</b> folder
-- open terminal
+#### ENV Variables
 
 ```sh
-cd client
+npm install dotenv
 ```
+
+- import dotenv from 'dotenv'
+- dotenv.config()
+
+- create .env
+- PORT=4000
+- .gitignore
+- /node_modules
+- .env
+
+#### Connect to MongoDB
+
+- switched back to PORT=5000
+- remove Error from '/'
+
+- existing MongoDB Atlas Account
 
 ```sh
-npx create-react-app .
+npm install mongoose
 ```
 
-```sh
-npm start
-```
+- create <b>db</b> folder
+- create connect.js
+- setup connectDB(url)
+- in server.js create start() function
+- get connection string
+- setup as MONGO_URL in .env
+- provide credentials and DB Name
 
-- set editor/browser side by side
-- copy/paste assets from complete project
+#### Auth Controller and Route Structure
 
-#### Spring Cleaning
-
-- in src remove
-- App.css
-- App.test.js
-- logo.svg
-- reportWebVitals.js
-- setupTests.js
-- fix App.js and index.js
-
-#### Title and Favicon
-
-- change title in public/index.html
-- replace favicon.ico in public
-- resource [Generate Favicons](https://favicon.io/)
-
-#### Normalize.css and Global Styles
-
-- CSS in JS (styled-components)
-- saves times on the setup
-- less lines of css
-- speeds up the development
-- normalize.css
-- small CSS file that provides cross-browser consistency in the default styling of HTML elements.
-- [normalize docs](https://necolas.github.io/normalize.css/)
-
-```sh
-npm install normalize.css
-```
-
-- import 'normalize.css' in index.js
-- SET BEFORE 'index.css'
-- replace contents of index.css
-- if any questions about normalize or specific styles
-- Coding Addict - [Default Starter Video](https://youtu.be/UDdyGNlQK5w)
-- Repo - [Default Starter Repo](https://github.com/john-smilga/default-starter)
-
-#### Landing Page
-
-- zoom level 175%
-- markdown preview extension
-- get something on the screen
-- react router and styled components right after
-- create pages directory in the source
-- for now Landing.js
-- create component (snippets extension)
-- setup basic return
+- create <b>controllers</b>
+- authController.js
+- create async functions
 
 ```js
-<h4>Landing Page<h4>
+export { register, login, updateUser }
 ```
 
-- import logo.svg and main.svg
-- import Landing in App.js and render
+- return res.send('function name')
+- create <b>routes</b> folder
+- authRoutes.js
+- setup express router
+- import functions from authController.js
 
-#### Styled Components
+```js
+router.route('/register').post(register)
+router.route('/login').post(login)
+router.route('/updateUser').patch(updateUser)
 
-- CSS in JS
-- Styled Components
-- have logic and styles in component
-- no name collisions
-- apply javascript logic
-- [Styled Components Docs](https://styled-components.com/)
-- [Styled Components Course](https://www.udemy.com/course/styled-components-tutorial-and-project-course/?referralCode=9DABB172FCB2625B663F)
+export default router
+```
+
+- import authRouter in server.js
+
+```js
+app.use('/api/v1/auth', authRouter)
+```
+
+#### Jobs Controller and Route Structure
+
+- jobsController.js
+- create async functions
+
+```js
+export { createJob, deleteJob, getAllJobs, updateJob, showStats }
+```
+
+- return res.send('function name')
+
+- jobsRoutes.js
+- setup express router
+- import functions from jobsController.js
+
+```js
+router.route('/').post(createJob).get(getAllJobs)
+// place before :id
+router.route('/stats').get(showStats)
+router.route('/:id').delete(deleteJob).patch(updateJob)
+
+export default router
+```
+
+- in server.js jobsRouter
+
+```js
+app.use('/api/v1/jobs', jobsRouter)
+```
+
+#### Postman
+
+- URL global var
+- JOBIFY Collection
+- auth and jobs folders
+- setup routes
+
+#### User Model
+
+- <b>models</b> folder
+- User.js
+- setup schema
+- name, email, password, lastName, location
+- all {type:String}
+
+#### Validate Email
+
+```js
+validate:{
+  validator:(field)=> {return 2 > 1},
+  message:'Please provide valid email'
+  }
+```
+
+- [Validator Package](https://www.npmjs.com/package/validator)
 
 ```sh
-npm install styled-components
+npm install validator
 ```
 
-```js
-import styled from 'styled-components'
+- import in User.js
+- validator.isEmail
 
-const El = styled.el`
-  // styles go here
-`
+#### Register User - Initial Setup
+
+- authController
+- import User model
+- setup temporary try/catch
+- await User.create(req.body)
+- if success 201 with json({user}) (temp)
+- if error 500 with json({msg:'there was an error'})
+
+#### Pass Error to Error Handler
+
+- next(error)
+
+#### Express-Async-Errors Package
+
+- remove try/catch
+- [Express-Async-Errors](https://www.npmjs.com/package/express-async-errors)
+
+```sh
+npm install express-async-errors
+
 ```
 
-- no name collisions, since unique class
-- vscode-styled-components extension
-- colors and bugs
-- style entire react component
+- in server.js
+- import 'express-async-errors'
 
-```js
-const Wrapper = styled.el``
-
-const Component = () => {
-  return (
-    <Wrapper>
-      <h1> Component</h1>
-    </Wrapper>
-  )
-}
-```
-
-- only responsible for styling
-- wrappers folder in assets
-
-#### Logo and Images
-
-- logo built in Figma
-- [Cool Images](https://undraw.co/)
-
-#### Logo
-
-- create <b>components</b> folder in source
-- create Logo.js
-- move import and image logic
-- export as default
-- utilize index.js
+- use throw Error('error') instead of next(error)

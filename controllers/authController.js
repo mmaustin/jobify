@@ -1,4 +1,5 @@
 const register = async (req, res) => {
+    console.log('yes');
     res.send('register user');
 }
 

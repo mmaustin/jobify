@@ -17,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/mmaustin/jobify/issues"
   },
-  "homepage": "https://github.com/mmaustin/jobify#readme"
+  "homepage": "https://github.com/mmaustin/jobify#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }

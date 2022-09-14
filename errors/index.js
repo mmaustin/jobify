@@ -1,4 +1,4 @@
-import BadRequestError from "./Bad-Request.js";
-import NotFoundError from "./Not-Found.js";
+import BadRequestError from "./bad-request.js";
+import NotFoundError from "./not-found.js";
 
 export {BadRequestError, NotFoundError};

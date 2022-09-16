@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/mmaustin/jobify#readme",
   "devDependencies": {
+    "concurrently": "^7.4.0",
     "nodemon": "^2.0.19"
   },
   "dependencies": {

@@ -3,6 +3,7 @@ const app = express();
 import dotenv from 'dotenv';
 dotenv.config();
 import 'express-async-errors';
+import cors from 'cors';
 
 import connectDB from './db/connect.js';
 
@@ -13,9 +14,8 @@ import jobsRouter from './routes/jobsRoutes.js';
 import notFoundMiddleware from './middleware/not-found.js';
 import errorHandlerMiddleware from './middleware/error-handler.js';
 
+app.use(cors());
 app.use(express.json());
-console.log('hello');
-console.log('hello');
 
 app.get('/', (req, res) => {
     res.send('Welcome!');

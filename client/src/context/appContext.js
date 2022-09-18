@@ -6,7 +6,10 @@ const initialState = {
     isLoading: false,
     showAlert: false,
     alertText: '',
-    alertType: ''    
+    alertType: '',
+    user: null,
+    token: null,
+    userLocation: '',    
 }
 
 const AppContext = React.createContext();

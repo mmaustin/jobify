@@ -42,12 +42,12 @@ const Register = () => {
             registerUser(currentUser);
         }
     }
-
+    //the below user comes from the return reducer value of type Register User Success, which is crazy!
     useEffect(()=>{
         if(user){
             setTimeout(()=>{
                 navigate('/');
-            })
+            }, 3000)
         }
     }, [user, navigate])
 

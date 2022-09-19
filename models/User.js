@@ -3,6 +3,7 @@ import validator from 'validator';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
+//placing select: false will stop the property from being visible in the response object
 const UserSchema = new mongoose.Schema({
     name: {type: String,
     required: [true, 'Please provide name'],

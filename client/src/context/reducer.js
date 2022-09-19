@@ -19,7 +19,7 @@ const reducer = (state, action) => {
         return {...state, isLoading: true};
     }
     if(action.type === REGISTER_USER_SUCCESS){
-        return {...state, isLoading: false, 
+        return {...state, isLoading: false,
             token: action.payload.token,
             user: action.payload.user,
             userLocation: action.payload.location,

@@ -1,6 +1,13 @@
 import React from 'react';
 import {Register, Landing, Error} from './pages'
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {
+  AddJob,
+  AllJobs,
+  Profile,
+  Stats,
+  SharedLayout
+} from './pages/dashboard';
 
 
 const App = () => {

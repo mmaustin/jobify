@@ -4,7 +4,7 @@ import Wrapper from '../assets/wrappers/Navbar';
 const Navbar = () => {
   return (
     <Wrapper>
-        Navbar
+        <h4>navbar</h4>
     </Wrapper>
   )
 }

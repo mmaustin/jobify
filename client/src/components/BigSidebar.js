@@ -4,7 +4,7 @@ import Wrapper from '../assets/wrappers/BigSidebar';
 const BigSidebar = () => {
   return (
     <Wrapper>
-        Big Sidebar
+        <h4>Big Sidebar</h4>
     </Wrapper>
   )
 }

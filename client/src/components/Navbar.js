@@ -18,11 +18,24 @@ const Navbar = () => {
           <Logo/>
           <h3 className='logo-text' >Dashboard</h3>
         </div>
-        <button
-          type='button'
-          className='toggle-btn'
-          onClick={()=> console.log('show/hide dropdown') }>
-        </button>
+        <div className='btn-container'>
+          <button
+            type='button'
+            className='toggle-btn'
+            onClick={()=> console.log('show/hide dropdown') }>
+              <FaUserCircle/>
+              McCray
+              <FaCaretDown/>
+          </button>
+          <div className='dropdown show-dropdown'>
+            <button
+              type='button'
+              className='dropdown-btn'
+              onClick={()=> console.log('logout user')}>
+                logout
+            </button>
+          </div>                    
+        </div>
       </div>
         
     </Wrapper>

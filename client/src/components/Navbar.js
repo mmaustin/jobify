@@ -21,7 +21,7 @@ const Navbar = () => {
         <div className='btn-container'>
           <button
             type='button'
-            className='toggle-btn'
+            className='btn'
             onClick={()=> console.log('show/hide dropdown') }>
               <FaUserCircle/>
               McCray

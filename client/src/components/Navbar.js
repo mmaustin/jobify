@@ -8,8 +8,20 @@ const Navbar = () => {
   return (
     <Wrapper>
       <div className='nav-center'>
-        <button className='toggle-btn' onClick={()=> console.log('toggle sidebar') }>
+        <button
+          type='button'
+          className='toggle-btn'
+          onClick={()=> console.log('toggle sidebar') }>
           <FaAlignLeft/>
+        </button>
+        <div>
+          <Logo/>
+          <h3 className='logo-text' >Dashboard</h3>
+        </div>
+        <button
+          type='button'
+          className='toggle-btn'
+          onClick={()=> console.log('show/hide dropdown') }>
         </button>
       </div>
         

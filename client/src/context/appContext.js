@@ -8,7 +8,8 @@ import { DISPLAY_ALERT,
         LOGIN_USER_BEGIN,
         LOGIN_USER_SUCCESS,
         LOGIN_USER_ERROR,
-        TOGGLE_SIDEBAR      
+        TOGGLE_SIDEBAR,
+        LOGOUT_USER     
     } from './actions';
 import axios from 'axios';
 
@@ -49,11 +50,11 @@ const AppProvider = ({children}) => {
         localStorage.setItem('location', location);
     }
     
-    /*const removeUserFromLocalStorage = ({user, token, location}) =>{
+    const removeUserFromLocalStorage = () =>{
         localStorage.removeItem('user');
         localStorage.removeItem('token');
         localStorage.removeItem('location');
-    }*/
+    }
 
     const registerUser = async currentUser => {
         dispatch({type: REGISTER_USER_BEGIN});
@@ -95,8 +96,13 @@ const AppProvider = ({children}) => {
         dispatch({type: TOGGLE_SIDEBAR})
     }
 
+    const logoutUser = () => {
+        dispatch({type: LOGOUT_USER});
+        removeUserFromLocalStorage();
+    }
+
     return(
-        <AppContext.Provider value={{...state, displayAlert, registerUser, loginUser, toggleSidebar}}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{...state, displayAlert, registerUser, loginUser, toggleSidebar, logoutUser}}>{children}</AppContext.Provider>
     )
 }
 

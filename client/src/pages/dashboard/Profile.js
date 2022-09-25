@@ -8,17 +8,56 @@ const Profile = () => {
   useAppContext();
 
   const [name, setName] = useState(user?.name);
-  const [eamil, setEmail] = useState(user?.email);
+  const [email, setEmail] = useState(user?.email);
   const [lastName, setLastName] = useState(user?.lastName);
   const [location, setLocation] = useState(user?.location);
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('update user');
+    /*if(!name || !email || !lastName || !location){
+      displayAlert();
+      return
+    }*/
+    updateUser({name, email, lastName, location});
   }
 
   return (
-    <h1>Profile Page</h1>
+    <Wrapper>
+      <form className='form' onSubmit={handleSubmit}>
+        <h3>profile</h3>
+        {showAlert && <Alert/>}
+        <div className='form-center'>
+          <FormRow
+            type='text'
+            name='name'
+            value={name}
+            handleChange={(e)=> setName(e.target.value)}
+          />
+          <FormRow
+            type='text'
+            labelText='last name'
+            name='lastName'
+            value={lastName}
+            handleChange={(e)=> setLastName(e.target.value)}
+          />
+          <FormRow
+            type='email'
+            name='email'
+            value={email}
+            handleChange={(e)=> setEmail(e.target.value)}
+          />
+          <FormRow
+            type='text'
+            name='location'
+            value={location}
+            handleChange={(e)=> setLocation(e.target.value)}
+          />
+          <button type="submit" className='btn btn-block' disabled={isLoading}>
+            {isLoading ? 'Please wait . . . ' : 'save changes'}
+          </button>
+        </div>
+      </form>
+    </Wrapper>
   )
 }
 

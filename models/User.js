@@ -3,7 +3,7 @@ import validator from 'validator';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-//placing select: false will stop the property from being visible in the response object
+//placing select: false will stop the property from being returned by some of the mongoose find by methods, i think??
 const UserSchema = new mongoose.Schema({
     name: {type: String,
     required: [true, 'Please provide name'],
@@ -37,6 +37,7 @@ const UserSchema = new mongoose.Schema({
 })
 
 UserSchema.pre('save', async function(){
+    if(!this.isModified('password')) return
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
 })

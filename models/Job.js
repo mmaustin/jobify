@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import User from "./User";
+import User from "./User.js";
 
 const JobSchema = new mongoose.Schema({
         company: {
@@ -15,7 +15,7 @@ const JobSchema = new mongoose.Schema({
         status: {
             type: String,
             enum: ['inteview', 'declined', 'pending'],
-            default: pending,
+            default: 'pending',
         },
         jobType: {
             type: String,

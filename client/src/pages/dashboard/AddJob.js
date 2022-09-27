@@ -8,6 +8,15 @@ const AddJob = () => {
   const {isEditing, showAlert, displayAlert, position, company, jobLocation,
   jobType, jobTypeOptions, status, statusOptions} = useAppContext();
 
+  const handleSubmit = e => {
+    e.preventDefault()
+    if(!company || !position || !jobLocation){
+      displayAlert();
+      return
+    }
+    console.log('create job');
+  }
+
   const handleJobInput = e => {
     const name = e.target.name;
     const value = e.target.value;
@@ -16,7 +25,7 @@ const AddJob = () => {
 
   return (
     <Wrapper>
-      <form className='form'>
+      <form className='form' onSubmit={handleSubmit}>
         <h3>{isEditing ? 'edit job' : 'add job'}</h3>
         {showAlert && <Alert/>}
         <div className='form-center'>
@@ -39,6 +48,14 @@ const AddJob = () => {
             value={jobLocation}
             handleChange={handleJobInput}
           />
+          <div className='btn-container'>
+            <button 
+              type='submit'
+              className='btn  btn-block submit-btn'
+              >
+              submit
+            </button>
+          </div>
         </div>
       </form>
     </Wrapper>

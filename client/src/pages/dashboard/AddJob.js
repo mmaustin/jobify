@@ -24,7 +24,20 @@ const AddJob = () => {
             type="text"
             name="position"
             value={position}
-
+            handleChange={handleJobInput}
+          />
+          <FormRow
+            type="text"
+            name="company"
+            value={company}
+            handleChange={handleJobInput}
+          />
+          <FormRow
+            type="text"
+            labelText='Job Location'
+            name="jobLocation"
+            value={jobLocation}
+            handleChange={handleJobInput}
           />
         </div>
       </form>

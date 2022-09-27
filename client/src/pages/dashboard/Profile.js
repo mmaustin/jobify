@@ -3,6 +3,7 @@ import { useAppContext } from '../../context/appContext';
 import { FormRow, Alert } from '../../components';
 import Wrapper from '../../assets/wrappers/DashboardFormPage';
 
+
 const Profile = () => {
   const {user, showAlert, displayAlert, updateUser, isLoading} = 
   useAppContext();

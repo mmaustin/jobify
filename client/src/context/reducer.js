@@ -1,4 +1,4 @@
-import e from "cors";
+
 import { DISPLAY_ALERT,
         CLEAR_ALERT,
         REGISTER_USER_BEGIN,

@@ -73,7 +73,10 @@ const AddJob = () => {
               submit
             </button>
             <button className='btn btn-block clear-btn'
-              onClick={()=> console.log('hello')} >
+              onClick={(e)=> {
+                e.preventDefault()
+                clearValues()
+                }}>
               clear
             </button>
           </div>

@@ -1,18 +1,18 @@
 
 
-const FormRowSelect = () => {
+const FormRowSelect = ({labelText, name, value, handleChange, list}) => {
   return (
     <div className='form-row'>
         <label htmlFor='jobType' className='form-label'>
-        job type  
+            {labelText || name} 
         </label>
         <select
-            name='jobType'
-            value={jobType}
-            onChange={handleJobInput}
+            name={name}
+            value={value}
+            onChange={handleChange}
             className='form-select'
         >
-        {jobTypeOptions.map((itemValue, index) => {
+        {list.map((itemValue, index) => {
             return <option key={index} value={itemValue}>
             {itemValue}
             </option>

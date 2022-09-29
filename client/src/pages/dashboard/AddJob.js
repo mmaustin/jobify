@@ -48,20 +48,22 @@ const AddJob = () => {
             value={jobLocation}
             handleChange={handleJobInput}
           />
+          {/* job status */}
           <FormRowSelect
             name='status'
             value={status}
             handleChange={handleJobInput}
             list={statusOptions}
           />
+          {/* job type */}
           <FormRowSelect
             name='jobType'
-            labelText='type'
+            labelText='Job Type'
             value={jobType}
             handleChange={handleJobInput}
             list={jobTypeOptions}
           />
-
+          {/* button container */}
           <div className='btn-container'>
             <button 
               type='submit'

@@ -12,7 +12,8 @@ import { DISPLAY_ALERT,
         LOGOUT_USER,
         UPDATE_USER_BEGIN,
         UPDATE_USER_SUCCESS,
-        UPDATE_USER_ERROR    
+        UPDATE_USER_ERROR,
+        HANDLE_CHANGE    
     } from './actions';
 import axios from 'axios';
 
@@ -157,8 +158,15 @@ const AppProvider = ({children}) => {
         clearAlert();
     }
 
+    const handleChange = ({name, value}) => {
+        dispatch({
+            type: HANDLE_CHANGE,
+            payload: {name, value}
+        })
+    }
+
     return(
-        <AppContext.Provider value={{...state, updateUser, displayAlert, registerUser, loginUser, toggleSidebar, logoutUser}}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{...state, handleChange, updateUser, displayAlert, registerUser, loginUser, toggleSidebar, logoutUser}}>{children}</AppContext.Provider>
     )
 }
 

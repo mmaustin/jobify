@@ -13,7 +13,8 @@ import { DISPLAY_ALERT,
         UPDATE_USER_BEGIN,
         UPDATE_USER_SUCCESS,
         UPDATE_USER_ERROR,
-        HANDLE_CHANGE    
+        HANDLE_CHANGE,
+        CLEAR_VALUES   
     } from './actions';
 import axios from 'axios';
 
@@ -165,8 +166,12 @@ const AppProvider = ({children}) => {
         })
     }
 
+    const clearValues = () => {
+        dispatch({type: CLEAR_VALUES});
+    }
+
     return(
-        <AppContext.Provider value={{...state, handleChange, updateUser, displayAlert, registerUser, loginUser, toggleSidebar, logoutUser}}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{...state, clearValues, handleChange, updateUser, displayAlert, registerUser, loginUser, toggleSidebar, logoutUser}}>{children}</AppContext.Provider>
     )
 }
 

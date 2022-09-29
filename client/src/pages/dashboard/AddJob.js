@@ -5,7 +5,7 @@ import Wrapper from '../../assets/wrappers/DashboardFormPage';
 
 const AddJob = () => {
 
-  const {isEditing, showAlert, displayAlert, position, company, jobLocation,
+  const {isEditing, showAlert, displayAlert, position, company, jobLocation, createJob,
   jobType, jobTypeOptions, status, statusOptions, handleChange, clearValues, isLoading} = useAppContext();
 
   const handleSubmit = e => {
@@ -14,7 +14,10 @@ const AddJob = () => {
       displayAlert();
       return
     }
-    console.log('create job');
+    if(isEditing){
+      return
+    }
+    createJob();
   }
 
   const handleJobInput = e => {

@@ -20,7 +20,7 @@ import { DISPLAY_ALERT,
         CREATE_JOB_ERROR           
     } from './actions';
 import axios from 'axios';
-import { IoReturnDownBack } from 'react-icons/io5';
+//import { IoReturnDownBack } from 'react-icons/io5';
 
 const user = localStorage.getItem('user');
 const token = localStorage.getItem('token');
@@ -184,7 +184,7 @@ const AppProvider = ({children}) => {
                 position, company, jobLocation, jobType, status 
             })
             dispatch({type: CREATE_JOB_SUCCESS});
-            dispatch({type: clearValues});
+            dispatch({type: CLEAR_VALUES});
         } catch (error) {
             if(error.response.status === 401) return 
             dispatch({
@@ -192,6 +192,7 @@ const AppProvider = ({children}) => {
                 payload: {msg: error.response.data.msg}
             });
         }
+        clearAlert();
     }
 
     return(

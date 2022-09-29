@@ -14,9 +14,13 @@ import { DISPLAY_ALERT,
         UPDATE_USER_SUCCESS,
         UPDATE_USER_ERROR,
         HANDLE_CHANGE,
-        CLEAR_VALUES   
+        CLEAR_VALUES,
+        CREATE_JOB_BEGIN,
+        CREATE_JOB_SUCCESS,
+        CREATE_JOB_ERROR           
     } from './actions';
 import axios from 'axios';
+import { IoReturnDownBack } from 'react-icons/io5';
 
 const user = localStorage.getItem('user');
 const token = localStorage.getItem('token');
@@ -170,8 +174,28 @@ const AppProvider = ({children}) => {
         dispatch({type: CLEAR_VALUES});
     }
 
+    const createJob = async () => {
+        dispatch({
+            type: CREATE_JOB_BEGIN
+        })
+        try {
+            const {position, company, jobLocation, jobType, status} = state;
+            await authFetch.post('/jobs', {
+                position, company, jobLocation, jobType, status 
+            })
+            dispatch({type: CREATE_JOB_SUCCESS});
+            dispatch({type: clearValues});
+        } catch (error) {
+            if(error.response.status === 401) return 
+            dispatch({
+                type: CREATE_JOB_ERROR,
+                payload: {msg: error.response.data.msg}
+            });
+        }
+    }
+
     return(
-        <AppContext.Provider value={{...state, clearValues, handleChange, updateUser, displayAlert, registerUser, loginUser, toggleSidebar, logoutUser}}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{...state, createJob, clearValues, handleChange, updateUser, displayAlert, registerUser, loginUser, toggleSidebar, logoutUser}}>{children}</AppContext.Provider>
     )
 }
 

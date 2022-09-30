@@ -201,8 +201,28 @@ const AppProvider = ({children}) => {
         clearAlert();
     }
 
+    const getJobs = async () =>{
+        let url = `/jobs`;
+        dispatch({type: GET_JOBS_BEGIN});
+        try {
+            //by default authFetch will perform a GET request
+            const {data} = await authFetch(url);
+            const {jobs, totalJobs, numOfPages} = data;
+            dispatch({type: GET_JOBS_SUCCESS,
+                payload: {
+                    jobs,
+                    totalJobs,
+                    numOfPages
+                }    
+            })
+        } catch (error) {
+            console.log(error.response);
+        }
+        clearAlert();
+    }
+
     return(
-        <AppContext.Provider value={{...state, createJob, clearValues, handleChange, updateUser, displayAlert, registerUser, loginUser, toggleSidebar, logoutUser}}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{...state, getJobs, createJob, clearValues, handleChange, updateUser, displayAlert, registerUser, loginUser, toggleSidebar, logoutUser}}>{children}</AppContext.Provider>
     )
 }
 

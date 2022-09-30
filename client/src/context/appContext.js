@@ -17,7 +17,9 @@ import { DISPLAY_ALERT,
         CLEAR_VALUES,
         CREATE_JOB_BEGIN,
         CREATE_JOB_SUCCESS,
-        CREATE_JOB_ERROR           
+        CREATE_JOB_ERROR,
+        GET_JOBS_BEGIN,
+        GET_JOBS_SUCCESS          
     } from './actions';
 import axios from 'axios';
 //import { IoReturnDownBack } from 'react-icons/io5';
@@ -43,7 +45,11 @@ const initialState = {
     jobTypeOptions: ['full-time', 'part-time', 'remote', 'internship'],
     jobType: 'full-time',
     statusOptions: ['inteview', 'declined', 'pending'],
-    status: 'pending'
+    status: 'pending',
+    jobs: [],
+    totalJobs: 0,
+    numOfPages: 1,
+    page: 1
 }
 
 const AppContext = React.createContext();

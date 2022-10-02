@@ -161,7 +161,7 @@ const reducer = (state, action) => {
         };
     }
     if(action.type === SET_EDIT_JOB){
-        const job = state.job.find(job => job._id === action.payload.id);
+        const job = state.jobs.find(job => job._id === action.payload.id);
         const {_id, position, company, jobLocation, jobType, status} = job;
         return {
             ...state,

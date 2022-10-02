@@ -226,8 +226,15 @@ const AppProvider = ({children}) => {
         clearAlert();
     }
 
+    const setEditJob = (id) => {
+        console.log(`set edit job : ${id}`);
+    }
+    const deleteJob = (id) => {
+        console.log(`delete job : ${id}`);
+    }
+
     return(
-        <AppContext.Provider value={{...state, getJobs, createJob, clearValues, handleChange, updateUser, displayAlert, registerUser, loginUser, toggleSidebar, logoutUser}}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{...state, setEditJob, deleteJob, getJobs, createJob, clearValues, handleChange, updateUser, displayAlert, registerUser, loginUser, toggleSidebar, logoutUser}}>{children}</AppContext.Provider>
     )
 }
 

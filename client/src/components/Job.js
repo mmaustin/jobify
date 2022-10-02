@@ -24,6 +24,12 @@ const Job = ({_id, position, company, jobLocation, jobType, createdAt, status}) 
         </div>
       </header>
       <div className='content'>
+        <div className='content-center'>
+          <JobInfo icon={<FaLocationArrow/>} text={jobLocation}/>
+          <JobInfo icon={<FaCalendarAlt/>} text={date}/>
+          <JobInfo icon={<FaBriefcase/>} text={jobType}/>
+          <div className={`status ${status}`}>{status}</div>
+        </div>
         <footer>
           <div className='actions'>
             <Link to='/add-job'

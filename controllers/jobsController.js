@@ -22,7 +22,7 @@ const updateJob = async (req, res) => {
     const {id: jobId} = req.params;
     const {company, position} = req.body;
 
-    if(!postion || !company){
+    if(!position || !company){
         throw new BadRequestError('Please provide all values');
     }
 

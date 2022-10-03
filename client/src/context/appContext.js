@@ -20,7 +20,8 @@ import { DISPLAY_ALERT,
         CREATE_JOB_ERROR,
         GET_JOBS_BEGIN,
         GET_JOBS_SUCCESS,
-        SET_EDIT_JOB          
+        SET_EDIT_JOB,
+        DELETE_JOB_BEGIN          
     } from './actions';
 import axios from 'axios';
 //import { IoReturnDownBack } from 'react-icons/io5';
@@ -234,8 +235,15 @@ const AppProvider = ({children}) => {
     const editJob = () => {
         console.log('edit job');
     }
-    const deleteJob = (id) => {
-        console.log(`delete job : ${id}`);
+    const deleteJob = async (jobId) => {
+        dispatch({type: DELETE_JOB_BEGIN})
+        try {
+            await authFetch.delete(`/jobs/${jobId}`)
+            getJobs();
+        } catch (error) {
+            console.log(error.response);
+            //logoutUser();
+        }
     }
 
     return(

@@ -201,7 +201,16 @@ const reducer = (state, action) => {
             alertType: 'danger',
             alertText: action.payload.msg,
         };
-    }   
+    }
+    if(action.type === SHOW_STATS_BEGIN){
+        return {...state, isLoading: true, showAlert: false};
+    }
+    if(action.type === SHOW_STATS_SUCCESS){
+        return {...state, isLoading: false,
+            stats: action.payload.stats,
+            monthlyApplications: action.payload.monthlyApplications
+        };
+    }     
 
     throw new Error(`no such action: ${action.type}`);
 }

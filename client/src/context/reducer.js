@@ -23,7 +23,9 @@ import { DISPLAY_ALERT,
         DELETE_JOB_BEGIN,
         EDIT_JOB_BEGIN,
         EDIT_JOB_SUCCESS,
-        EDIT_JOB_ERROR
+        EDIT_JOB_ERROR,
+        SHOW_STATS_BEGIN,
+        SHOW_STATS_SUCCESS
         } from "./actions";
 
 import { initialState } from "./appContext";
@@ -199,7 +201,7 @@ const reducer = (state, action) => {
             alertType: 'danger',
             alertText: action.payload.msg,
         };
-    }    
+    }   
 
     throw new Error(`no such action: ${action.type}`);
 }

@@ -24,7 +24,9 @@ import { DISPLAY_ALERT,
         DELETE_JOB_BEGIN,
         EDIT_JOB_BEGIN,
         EDIT_JOB_SUCCESS,
-        EDIT_JOB_ERROR         
+        EDIT_JOB_ERROR,
+        SHOW_STATS_BEGIN,
+        SHOW_STATS_SUCCESS        
     } from './actions';
 import axios from 'axios';
 //import { IoReturnDownBack } from 'react-icons/io5';
@@ -54,7 +56,9 @@ const initialState = {
     jobs: [],
     totalJobs: 0,
     numOfPages: 1,
-    page: 1
+    page: 1,
+    stats: {},
+    monthlyApplications: [] 
 }
 
 const AppContext = React.createContext();
@@ -269,8 +273,26 @@ const AppProvider = ({children}) => {
         }
     }
 
+    const showStats = async()=>{
+        dispatch({type: SHOW_STATS_BEGIN})
+        try {
+            const {data} = await authFetch('/jobs/stats')
+            dispatch({
+                type: SHOW_STATS_SUCCESS,
+                payload: {
+                    stats: data.defaultStats,
+                    monthlyApplications: data.monthlyApplications
+                },
+            })
+        } catch (error) {
+            console.log(error.response);
+            //logoutUser();
+        }
+        clearAlert();
+    }
+
     return(
-        <AppContext.Provider value={{...state, editJob, setEditJob, deleteJob, getJobs, createJob, clearValues, handleChange, updateUser, displayAlert, registerUser, loginUser, toggleSidebar, logoutUser}}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{...state, showStats, editJob, setEditJob, deleteJob, getJobs, createJob, clearValues, handleChange, updateUser, displayAlert, registerUser, loginUser, toggleSidebar, logoutUser}}>{children}</AppContext.Provider>
     )
 }
 

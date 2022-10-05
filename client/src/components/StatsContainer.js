@@ -3,7 +3,6 @@ import { useAppContext } from '../context/appContext'
 import StatsItem from './StatsItem'
 import Wrapper from '../assets/wrappers/StatsContainer'
 import { FaSuitcaseRolling, FaCalendarCheck, FaBug } from 'react-icons/fa'
-import Stats from '../pages/dashboard/Stats'
 
 const StatsContainer = () => {
     const {stats} = useAppContext();

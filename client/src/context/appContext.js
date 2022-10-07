@@ -26,7 +26,8 @@ import { DISPLAY_ALERT,
         EDIT_JOB_SUCCESS,
         EDIT_JOB_ERROR,
         SHOW_STATS_BEGIN,
-        SHOW_STATS_SUCCESS        
+        SHOW_STATS_SUCCESS,
+        CLEAR_FILTERS       
     } from './actions';
 import axios from 'axios';
 //import { IoReturnDownBack } from 'react-icons/io5';
@@ -297,7 +298,7 @@ const AppProvider = ({children}) => {
     }
 
     const clearFilters = () => {
-        console.log('clear filters');
+        dispatch({type: CLEAR_FILTERS})
     }
 
     return(

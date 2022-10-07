@@ -25,7 +25,8 @@ import { DISPLAY_ALERT,
         EDIT_JOB_SUCCESS,
         EDIT_JOB_ERROR,
         SHOW_STATS_BEGIN,
-        SHOW_STATS_SUCCESS
+        SHOW_STATS_SUCCESS,
+        CLEAR_FILTERS
         } from "./actions";
 
 import { initialState } from "./appContext";
@@ -210,7 +211,16 @@ const reducer = (state, action) => {
             stats: action.payload.stats,
             monthlyApplications: action.payload.monthlyApplications
         };
-    }     
+    }
+    if(action.type === CLEAR_FILTERS){
+        return{
+            ...state,
+            search: '',
+            searchStatus: 'all',
+            searchType: 'all',
+            sort: 'latest'
+        }
+    }
 
     throw new Error(`no such action: ${action.type}`);
 }

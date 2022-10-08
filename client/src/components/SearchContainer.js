@@ -56,7 +56,7 @@ const SearchContainer = () => {
             name='sort'
             value={sort}
             handleChange={handleSearch}
-            list={['all', ...sortOptions]}
+            list={sortOptions}
           />
           <button
             className='btn btn-block btn-danger'

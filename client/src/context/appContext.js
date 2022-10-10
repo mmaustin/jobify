@@ -238,12 +238,7 @@ const AppProvider = ({children}) => {
                 }    
             })
         } catch (error) {
-            console.log(error.response);
-            //logoutUser();
-            //as there are no values being passed thought could cause
-            //syntax or missing value errors, we should not get any errors
-            //at all here.  thus, if there's an error, something has gone
-            //wrong in the app, and he prefers to log out the user as a precaution
+            logoutUser();
         }
         clearAlert();
     }
@@ -281,8 +276,7 @@ const AppProvider = ({children}) => {
             await authFetch.delete(`/jobs/${jobId}`)
             getJobs();
         } catch (error) {
-            console.log(error.response);
-            //logoutUser();
+            logoutUser();
         }
     }
 
@@ -298,8 +292,7 @@ const AppProvider = ({children}) => {
                 },
             })
         } catch (error) {
-            console.log(error.response);
-            //logoutUser();
+            logoutUser();
         }
         clearAlert();
     }

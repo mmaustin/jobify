@@ -27,7 +27,8 @@ import { DISPLAY_ALERT,
         EDIT_JOB_ERROR,
         SHOW_STATS_BEGIN,
         SHOW_STATS_SUCCESS,
-        CLEAR_FILTERS       
+        CLEAR_FILTERS,
+        CHANGE_PAGE       
     } from './actions';
 import axios from 'axios';
 //import { IoReturnDownBack } from 'react-icons/io5';
@@ -307,8 +308,11 @@ const AppProvider = ({children}) => {
         dispatch({type: CLEAR_FILTERS})
     }
 
+    const changePage = page => {
+        dispatch({type: CHANGE_PAGE, payload: {page}})
+    }
     return(
-        <AppContext.Provider value={{...state, showStats, editJob, setEditJob, deleteJob, getJobs, createJob, clearValues, handleChange, updateUser, displayAlert, registerUser, loginUser, toggleSidebar, logoutUser, clearFilters}}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{...state, changePage, showStats, editJob, setEditJob, deleteJob, getJobs, createJob, clearValues, handleChange, updateUser, displayAlert, registerUser, loginUser, toggleSidebar, logoutUser, clearFilters}}>{children}</AppContext.Provider>
     )
 }
 

@@ -3,10 +3,11 @@ import { useAppContext } from '../context/appContext';
 import Job from './Job';
 import Wrapper from '../assets/wrappers/JobsContainer';
 import Loading from './Loading';
+import PageBtnContainer from './PageBtnContainer';
 
 
 const JobsContainer = () => {
-    const {search, searchStatus, searchType, sort, getJobs, jobs, isLoading, page, totalJobs} = useAppContext();
+    const {search, searchStatus, searchType, sort, getJobs, jobs, isLoading, page, totalJobs, numOfPages} = useAppContext();
 
     useEffect(() => {
       getJobs();
